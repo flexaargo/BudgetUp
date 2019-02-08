@@ -70,14 +70,14 @@ class SummaryView: UIView {
     NSLayoutConstraint.activate([
       remainingLabel.leadingAnchor.constraint(equalTo: summaryTextView.leadingAnchor),
       remainingLabel.trailingAnchor.constraint(equalTo: summaryTextView.trailingAnchor),
-      remainingLabel.topAnchor.constraint(equalTo: summaryTextView.bottomAnchor),
-      remainingLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -8)
+      remainingLabel.topAnchor.constraint(equalTo: summaryTextView.bottomAnchor, constant: 4),
+      remainingLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -8),
       ])
   }
   
   func setSummaryText(availableBalance: Double, budgetAmount: Int) {
-    let locale = NSLocale()
-    let currencySymbol = locale.currencySymbol
+    let currentLocale = NSLocale.current
+    let currencySymbol = currentLocale.currencySymbol!
     
     let centValue = availableBalance.truncatingRemainder(dividingBy: 1)
     let centFormatter = NumberFormatter()

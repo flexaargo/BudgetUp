@@ -16,6 +16,8 @@ class HomeViewController: UIViewController {
     super.viewDidLoad()
     
     setupLayout()
+    
+    summaryView.setSummaryText(availableBalance: 734.10, budgetAmount: 1000)
   }
   
   private func setupLayout() {
