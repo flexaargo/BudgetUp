@@ -17,9 +17,6 @@ class SummaryView: UIView {
     textView.isScrollEnabled = false
     textView.textColor = Color.darkText.value
     
-    // DEBUG
-//    textView.backgroundColor = .yellow
-    
     textView.translatesAutoresizingMaskIntoConstraints = false
     
     return textView
@@ -32,9 +29,6 @@ class SummaryView: UIView {
     label.font = UIFont.systemFont(ofSize: 18)
     label.textColor = Color.lightText.value
     
-    // DEBUG
-//    label.backgroundColor = .blue
-    
     label.translatesAutoresizingMaskIntoConstraints = false
     
     return label
@@ -42,16 +36,12 @@ class SummaryView: UIView {
   
   override init(frame: CGRect) {
     super.init(frame: frame)
-    
 
     backgroundColor = .white
     layer.cornerRadius = 6
     dropShadow(alpha: 0.5, x: 0, y: 2, blur: 4, spread: 0)
     
     translatesAutoresizingMaskIntoConstraints = false
-    
-    // DEBUG
-    //    backgroundColor = .red
     
     setupLayout()
   }
