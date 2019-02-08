@@ -75,6 +75,30 @@ class SummaryView: UIView {
       ])
   }
   
+  func setSummaryText(availableBalance: Double, budgetAmount: Int) {
+    let locale = NSLocale()
+    let currencySymbol = locale.currencySymbol
+    
+    let centValue = availableBalance.truncatingRemainder(dividingBy: 1)
+    let centFormatter = NumberFormatter()
+    centFormatter.minimumFractionDigits = 2
+    centFormatter.minimumIntegerDigits = 0
+    
+    let primaryAttributes = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 50.0, weight: .medium)]
+    let secondaryAttributes = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 25.0, weight: .medium)]
+    
+    let summary = NSMutableAttributedString()
+    // currency symbol
+    summary.append(NSAttributedString(string: currencySymbol, attributes: secondaryAttributes))
+    // available
+    summary.append(NSAttributedString(string: String(Int(floor(availableBalance))), attributes: primaryAttributes))
+    // rest of the summary
+    let restOfSummary = centFormatter.string(for: centValue)! + " / " + currencySymbol + String(budgetAmount)
+    summary.append(NSAttributedString(string: restOfSummary, attributes: secondaryAttributes))
+    
+    summaryTextView.attributedText = summary
+  }
+  
   required init?(coder aDecoder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
   }
