@@ -23,6 +23,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     let navigationController = UINavigationController()
     navigationController.viewControllers = [homeViewController]
     
+    styleNavigationController(navigationController)
+    
     window?.rootViewController = navigationController
     window?.makeKeyAndVisible()
     
@@ -50,7 +52,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   func applicationWillTerminate(_ application: UIApplication) {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
   }
+  
+  func styleNavigationController(_ controller: UINavigationController) {
+    controller.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+    controller.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+    controller.navigationBar.prefersLargeTitles = true
+    controller.navigationBar.isTranslucent = false
+    controller.navigationBar.barStyle = .black
+    controller.navigationBar.barTintColor = Color.primaryLight.value
+  }
 
 
 }
-
