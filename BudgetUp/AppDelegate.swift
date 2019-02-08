@@ -20,7 +20,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     let homeViewController = HomeViewController()
     homeViewController.view.backgroundColor = Color.lightBackground.value
     
-    window?.rootViewController = homeViewController
+    let navigationController = UINavigationController()
+    navigationController.viewControllers = [homeViewController]
+    
+    window?.rootViewController = navigationController
     window?.makeKeyAndVisible()
     
     return true
