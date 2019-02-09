@@ -49,6 +49,7 @@ class ActivityView: UIView {
     setupLayout()
   }
   
+  /// Setup the layout in the activity view
   private func setupLayout() {
     addSubview(activityLabel)
     addSubview(activityTableView)

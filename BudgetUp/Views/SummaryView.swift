@@ -46,6 +46,7 @@ class SummaryView: UIView {
     setupLayout()
   }
   
+  /// Setup the layout in the summary view
   private func setupLayout() {
     addSubview(summaryTextView)
     addSubview(remainingLabel)
