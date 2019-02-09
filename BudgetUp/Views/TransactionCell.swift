@@ -12,6 +12,18 @@ class TransactionCell: UITableViewCell {
   
   var transaction: Transaction?
   
+  let cellBackground: UIView = {
+    let view = UIView()
+    
+    view.backgroundColor = .white
+    view.layer.cornerRadius = 6
+    view.dropShadow(alpha: 0.2, x: 0, y: 2, blur: 4, spread: 0)
+    
+    view.translatesAutoresizingMaskIntoConstraints = false
+    
+    return view
+  }()
+  
   let titleLabel: UILabel = {
     let label = UILabel()
     
@@ -54,37 +66,47 @@ class TransactionCell: UITableViewCell {
   override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
     super.init(style: style, reuseIdentifier: reuseIdentifier)
     
-    backgroundColor = .red
+    backgroundColor = .clear
     
-    translatesAutoresizingMaskIntoConstraints = false
+    addSubview(cellBackground)
+    cellBackground.addSubview(titleLabel)
+    cellBackground.addSubview(amountLabel)
+    cellBackground.addSubview(categoryLabel)
     
+    setupLayout()
+  }
+  
+  override func layoutSubviews() {
+    super.layoutSubviews()
     setupLayout()
   }
   
   /// Setup the layout inside of this cell
   private func setupLayout() {
-    addSubview(titleLabel)
-    addSubview(amountLabel)
-    addSubview(categoryLabel)
-    
     NSLayoutConstraint.activate([
-      titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
-      titleLabel.trailingAnchor.constraint(lessThanOrEqualTo: amountLabel.leadingAnchor, constant: -8),
-      titleLabel.topAnchor.constraint(equalTo: topAnchor),
-      titleLabel.heightAnchor.constraint(equalToConstant: 24)
+      titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
+      titleLabel.trailingAnchor.constraint(greaterThanOrEqualTo: leadingAnchor, constant: -16),
+      titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: 16)
       ])
     
     NSLayoutConstraint.activate([
-      amountLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
-      amountLabel.topAnchor.constraint(equalTo: topAnchor),
+      amountLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
+      amountLabel.topAnchor.constraint(equalTo: topAnchor, constant: 16),
       amountLabel.heightAnchor.constraint(equalToConstant: 24)
       ])
-    
+
     NSLayoutConstraint.activate([
       categoryLabel.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor),
       categoryLabel.trailingAnchor.constraint(lessThanOrEqualTo: amountLabel.trailingAnchor),
       categoryLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 0),
-      categoryLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 0)
+      categoryLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -16)
+      ])
+    
+    NSLayoutConstraint.activate([
+      cellBackground.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor, constant: -8),
+      cellBackground.trailingAnchor.constraint(equalTo: amountLabel.trailingAnchor, constant: 8),
+      cellBackground.topAnchor.constraint(equalTo: titleLabel.topAnchor, constant: -8),
+      cellBackground.bottomAnchor.constraint(equalTo: categoryLabel.bottomAnchor, constant: 8)
       ])
   }
   

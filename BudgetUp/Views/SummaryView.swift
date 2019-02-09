@@ -39,7 +39,7 @@ class SummaryView: UIView {
 
     backgroundColor = .white
     layer.cornerRadius = 6
-    dropShadow(alpha: 0.5, x: 0, y: 2, blur: 4, spread: 0)
+    dropShadow(alpha: 0.2, x: 0, y: 2, blur: 4, spread: 0)
     
     translatesAutoresizingMaskIntoConstraints = false
     

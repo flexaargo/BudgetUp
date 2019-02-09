@@ -31,10 +31,14 @@ class ActivityView: UIView {
     return button
   }()
   
-  private let activityTableView: UITableView = {
+  let activityTableView: UITableView = {
     let tableView = UITableView()
     
     tableView.backgroundColor = Color.lightBackground.value
+    
+    tableView.register(TransactionCell.self, forCellReuseIdentifier: "TransactionCell")
+    tableView.separatorStyle = .none
+    tableView.showsVerticalScrollIndicator = false
     
     tableView.translatesAutoresizingMaskIntoConstraints = false
     
@@ -56,14 +60,14 @@ class ActivityView: UIView {
     addSubview(addButton)
     
     NSLayoutConstraint.activate([
-      activityLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 0),
-      activityLabel.trailingAnchor.constraint(greaterThanOrEqualTo: addButton.leadingAnchor, constant: 8),
+      activityLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 8),
+      activityLabel.trailingAnchor.constraint(lessThanOrEqualTo: addButton.leadingAnchor, constant: -8),
       activityLabel.topAnchor.constraint(equalTo: topAnchor, constant: 0),
       activityLabel.heightAnchor.constraint(equalToConstant: 36)
       ])
     
     NSLayoutConstraint.activate([
-      addButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 0),
+      addButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -8),
       addButton.topAnchor.constraint(equalTo: topAnchor, constant: 0),
       addButton.heightAnchor.constraint(equalTo: addButton.widthAnchor, multiplier: 1)
       ])
@@ -71,7 +75,7 @@ class ActivityView: UIView {
     NSLayoutConstraint.activate([
       activityTableView.leadingAnchor.constraint(equalTo: leadingAnchor),
       activityTableView.trailingAnchor.constraint(equalTo: trailingAnchor),
-      activityTableView.topAnchor.constraint(equalTo: activityLabel.bottomAnchor, constant: 4),
+      activityTableView.topAnchor.constraint(equalTo: activityLabel.bottomAnchor, constant: 8),
       activityTableView.bottomAnchor.constraint(equalTo: bottomAnchor)
       ])
     
