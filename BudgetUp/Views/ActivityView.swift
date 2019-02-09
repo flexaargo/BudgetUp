@@ -14,7 +14,7 @@ class ActivityView: UIView {
     
     label.text = "Activity"
     label.textColor = Color.darkText.value
-    label.font = UIFont.systemFont(ofSize: 26, weight: .medium)
+    label.font = UIFont.systemFont(ofSize: 30, weight: .medium)
     
     label.translatesAutoresizingMaskIntoConstraints = false
     
@@ -58,7 +58,7 @@ class ActivityView: UIView {
       activityLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 0),
       activityLabel.trailingAnchor.constraint(greaterThanOrEqualTo: addButton.leadingAnchor, constant: 8),
       activityLabel.topAnchor.constraint(equalTo: topAnchor, constant: 0),
-      activityLabel.heightAnchor.constraint(equalToConstant: 31)
+      activityLabel.heightAnchor.constraint(equalToConstant: 36)
       ])
     
     NSLayoutConstraint.activate([

@@ -41,6 +41,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D0C6C063220EBA3A00D33A93 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		D0FEF56922094B7400A08446 = {
 			isa = PBXGroup;
 			children = (
@@ -63,18 +70,11 @@
 				D0FEF57522094B7400A08446 /* AppDelegate.swift */,
 				D0FEF589220A709C00A08446 /* Controllers */,
 				D0FEF588220A709800A08446 /* Views */,
-				D0FEF587220A708A00A08446 /* Models */,
+				D0C6C063220EBA3A00D33A93 /* Models */,
 				D0FEF58A220A70B300A08446 /* Supporting Files */,
 				D0FEF58122094B7600A08446 /* Info.plist */,
 			);
 			path = BudgetUp;
-			sourceTree = "<group>";
-		};
-		D0FEF587220A708A00A08446 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Models;
 			sourceTree = "<group>";
 		};
 		D0FEF588220A709800A08446 /* Views */ = {
