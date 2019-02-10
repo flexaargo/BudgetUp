@@ -50,14 +50,19 @@ class ActivityView: UIView {
     
     translatesAutoresizingMaskIntoConstraints = false
     
+    addSubview(activityLabel)
+    addSubview(activityTableView)
+    addSubview(addButton)
+    
+    setupLayout()
+  }
+  
+  override func layoutSubviews() {
     setupLayout()
   }
   
   /// Setup the layout in the activity view
   private func setupLayout() {
-    addSubview(activityLabel)
-    addSubview(activityTableView)
-    addSubview(addButton)
     
     NSLayoutConstraint.activate([
       activityLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 8),

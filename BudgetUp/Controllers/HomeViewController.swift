@@ -57,23 +57,41 @@ class HomeViewController: UIViewController {
   }
   
   private func initTransactionsWithDummyData() {
+    var transaction = Transaction()
+    transaction.title = "Lunch with friends"
+    transaction.description = "Went to lunch with friends at In n Out"
+    transaction.amount = -10.24
+    transaction.transactionCategoryEnum = .food
     
+    transactions.append(transaction)
+    
+    var transaction2 = Transaction()
+    transaction2.title = "Rent"
+    transaction2.description = "Payed apartment rent"
+    transaction2.amount = -650
+    transaction2.transactionCategoryEnum = .rent
+    
+    transactions.append(transaction2)
   }
 
 }
 
 
 extension HomeViewController: UITableViewDelegate {
-  
+  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    tableView.deselectRow(at: indexPath, animated: true)
+  }
 }
 
 extension HomeViewController: UITableViewDataSource {
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return 10
+    return transactions.count
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withIdentifier: "TransactionCell", for: indexPath) as! TransactionCell
+    
+    cell.transaction = transactions[indexPath.row]
     
     return cell
   }

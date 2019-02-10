@@ -10,7 +10,17 @@ import UIKit
 
 class TransactionCell: UITableViewCell {
   
-  var transaction: Transaction?
+  var transaction: Transaction? {
+    didSet {
+      let currentLocale = NSLocale.current
+      let currencySymbol = currentLocale.currencySymbol!
+      let sign = transaction!.amount > 0 ? "+" : "-"
+      
+      titleLabel.text = transaction!.title
+      amountLabel.text = sign + currencySymbol + String(format: "%.2f", transaction!.amount.magnitude)
+      categoryLabel.text = transaction!.transactionCategory.capitalized(with: currentLocale)
+    }
+  }
   
   let cellBackground: UIView = {
     let view = UIView()
@@ -30,7 +40,7 @@ class TransactionCell: UITableViewCell {
     label.font = UIFont.systemFont(ofSize: 20)
     label.textColor = Color.darkText.value
     
-    label.text = "Lunch with friends"
+    label.text = "D:"
     
     label.translatesAutoresizingMaskIntoConstraints = false
     
@@ -43,7 +53,7 @@ class TransactionCell: UITableViewCell {
     label.font = UIFont.systemFont(ofSize: 20)
     label.textColor = Color.darkText.value
     
-    label.text = "-$10.24"
+    label.text = "D:"
     
     label.translatesAutoresizingMaskIntoConstraints = false
     
@@ -56,7 +66,7 @@ class TransactionCell: UITableViewCell {
     label.font = UIFont.systemFont(ofSize: 15)
     label.textColor = Color.lightText.value
     
-    label.text = "Food"
+    label.text = "D:"
     
     label.translatesAutoresizingMaskIntoConstraints = false
     
@@ -67,6 +77,7 @@ class TransactionCell: UITableViewCell {
     super.init(style: style, reuseIdentifier: reuseIdentifier)
     
     backgroundColor = .clear
+    selectionStyle = .none
     
     addSubview(cellBackground)
     cellBackground.addSubview(titleLabel)
@@ -113,7 +124,25 @@ class TransactionCell: UITableViewCell {
   override func setSelected(_ selected: Bool, animated: Bool) {
     super.setSelected(selected, animated: animated)
     
-    // Configure the view for the selected state
+    UIView.animate(withDuration: animated ? 0.5 : 0.0) {
+      if selected {
+        self.cellBackground.backgroundColor = Color.lightBackground.value
+      } else {
+        self.cellBackground.backgroundColor = .white
+      }
+    }
+  }
+  
+  override func setHighlighted(_ highlighted: Bool, animated: Bool) {
+    super.setHighlighted(highlighted, animated: animated)
+
+    UIView.animate(withDuration: animated ? 0.5 : 0.0) {
+      if highlighted {
+        self.cellBackground.backgroundColor = Color.lightBackground.value
+      } else {
+        self.cellBackground.backgroundColor = .white
+      }
+    }
   }
   
   required init?(coder aDecoder: NSCoder) {

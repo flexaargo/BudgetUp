@@ -43,13 +43,18 @@ class SummaryView: UIView {
     
     translatesAutoresizingMaskIntoConstraints = false
     
+    addSubview(summaryTextView)
+    addSubview(remainingLabel)
+    
+    setupLayout()
+  }
+  
+  override func layoutSubviews() {
     setupLayout()
   }
   
   /// Setup the layout in the summary view
   private func setupLayout() {
-    addSubview(summaryTextView)
-    addSubview(remainingLabel)
     
     NSLayoutConstraint.activate([
       summaryTextView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 8),
