@@ -21,9 +21,9 @@ enum ActionCategory: String, CaseIterable {
 
 struct Action {
   var title: String = ""
-  var description: String = ""
+  var details: String = ""
   var amount: Double = 0.00
-  var date: NSDate = NSDate()
+  var date: NSDate?
   var actionCategory: String = ActionCategory.Other.rawValue
   var actionCategoryEnum: ActionCategory {
     get {

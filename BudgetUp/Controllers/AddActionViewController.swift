@@ -14,6 +14,8 @@ protocol AddActionDelegate {
 
 class AddActionViewController: UIViewController {
   
+  var action: Action!
+  
   var addActionDelegate: AddActionDelegate?
   
   let standaloneNavigationItem: UINavigationItem = {
@@ -21,6 +23,8 @@ class AddActionViewController: UIViewController {
     
     navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(cancelButtonPressed))
     navigationItem.leftBarButtonItem?.tintColor = Color.negation.value
+    navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Confirm", style: .plain, target: self, action: #selector(confirmButtonPressed))
+    navigationItem.rightBarButtonItem?.tintColor = Color.affirmation.value
     navigationItem.title = "New Action"
     
     return navigationItem
@@ -56,27 +60,67 @@ class AddActionViewController: UIViewController {
     return picker
   }()
   
-  let addActivityView = AddActionView()
+  let addActionView = AddActionView()
   
   override func viewDidLoad() {
     super.viewDidLoad()
     
+    action = Action()
+    
     view.backgroundColor = Color.lightBackground.value
     
     view.addSubview(navigationBar)
-    view.addSubview(addActivityView)
+    view.addSubview(addActionView)
     
-    addActivityView.detailsTextView.delegate = self
-    addActivityView.titleTextField.delegate = self
-    addActivityView.categoryField.addTarget(self, action: #selector(beganEditingCategory(_:)), for: .editingDidBegin)
-    addActivityView.dateField.addTarget(self, action: #selector(beganEditingDate(_:)), for: .editingDidBegin)
+    addActionView.detailsTextView.delegate = self
+    addActionView.titleTextField.delegate = self
+    addActionView.categoryField.addTarget(self, action: #selector(beganEditingCategory(_:)), for: .editingDidBegin)
+    addActionView.dateField.addTarget(self, action: #selector(beganEditingDate(_:)), for: .editingDidBegin)
     
     datePicker.addTarget(self, action: #selector(selectedDate(_:)), for: .valueChanged)
     
-    addActivityView.dateField.inputView = datePicker
-    addActivityView.categoryField.inputView = categoryPicker
+    addActionView.dateField.inputView = datePicker
+    addActionView.categoryField.inputView = categoryPicker
     
     dismissKeyboardOnTap()
+  }
+  
+  // TODO: THIS NEEDS REFACTORING
+  @objc private func confirmButtonPressed() {
+    action.title = addActionView.titleTextField.text!
+    let details = addActionView.detailsTextView.text! == "Any details?" ? "" : addActionView.detailsTextView.text!
+    action.details = details
+    action.amount = addActionView.amountField.doubleValue
+    
+    if action.title.count == 0 {
+      alertUser("You cannot create an activity with no title.")
+      return
+    }
+    
+    guard let category = ActionCategory(rawValue: addActionView.categoryField.text!) else { alertUser("You cannot create an activity with no category."); return }
+    action.actionCategoryEnum = category
+    
+    if action.amount == 0 {
+      alertUser("You cannot create an activity with no dollar amount.")
+      return
+    }
+    
+    if action.date == nil {
+      alertUser("You must choose a date on which the activity occurred.")
+      return
+    }
+    
+    addActionDelegate?.addedAction(action)
+    dismissKeyboard()
+    dismiss(animated: true, completion: nil)
+  }
+  
+  func alertUser(_ message: String) {
+    let alert = UIAlertController(title: "Oops!\nSomething went wrong", message: message, preferredStyle: .alert)
+    
+    alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+    
+    present(alert, animated: true, completion: nil)
   }
   
   @objc private func cancelButtonPressed() {
@@ -88,7 +132,9 @@ class AddActionViewController: UIViewController {
   @objc private func selectedDate(_ datePicker: UIDatePicker) {
     let dateFormatter = DateFormatter()
     dateFormatter.dateFormat = "MMM d, yyyy"
-    addActivityView.dateField.text = dateFormatter.string(from: datePicker.date)
+    addActionView.dateField.text = dateFormatter.string(from: datePicker.date)
+    
+    action.date = NSDate(timeIntervalSince1970: datePicker.date.timeIntervalSince1970)
   }
   
   @objc private func beganEditingCategory(_ textField: UITextField) {
@@ -96,11 +142,16 @@ class AddActionViewController: UIViewController {
   }
   
   @objc private func beganEditingDate(_ textField: UITextField) {
-    textField.text = textField.placeholder
+    let today = Date()
+    let dateFormatter = DateFormatter()
+    dateFormatter.dateFormat = "MMM d, yyyy"
+    
+    textField.text = dateFormatter.string(from: today)
+    action.date = NSDate(timeIntervalSince1970: today.timeIntervalSince1970)
   }
   
   override func viewDidAppear(_ animated: Bool) {
-    addActivityView.titleTextField.becomeFirstResponder()
+    addActionView.titleTextField.becomeFirstResponder()
   }
   
   override func viewWillLayoutSubviews() {
@@ -115,9 +166,9 @@ class AddActionViewController: UIViewController {
       ])
     
     NSLayoutConstraint.activate([
-      addActivityView.leftAnchor.constraint(equalTo: view.leftAnchor),
-      addActivityView.rightAnchor.constraint(equalTo: view.rightAnchor),
-      addActivityView.topAnchor.constraint(equalTo: navigationBar.bottomAnchor)
+      addActionView.leftAnchor.constraint(equalTo: view.leftAnchor),
+      addActionView.rightAnchor.constraint(equalTo: view.rightAnchor),
+      addActionView.topAnchor.constraint(equalTo: navigationBar.bottomAnchor)
       ])
   }
   
@@ -129,7 +180,9 @@ extension AddActionViewController: UIPickerViewDelegate {
   }
   
   func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-    addActivityView.categoryField.text = ActionCategory.allCases[row].rawValue
+    addActionView.categoryField.text = ActionCategory.allCases[row].rawValue
+    
+    action.actionCategoryEnum = ActionCategory.allCases[row]
   }
 }
 

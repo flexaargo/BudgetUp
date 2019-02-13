@@ -81,7 +81,7 @@ class HomeViewController: UIViewController {
   private func initActionsWithDummyData() {
     var action = Action()
     action.title = "Lunch with friends"
-    action.description = "Went to lunch with friends at In n Out"
+    action.details = "Went to lunch with friends at In n Out"
     action.amount = -10.24
     action.actionCategoryEnum = .Food
     
@@ -89,7 +89,7 @@ class HomeViewController: UIViewController {
     
     var action2 = Action()
     action2.title = "Rent"
-    action2.description = "Payed apartment rent"
+    action2.details = "Payed apartment rent"
     action2.amount = -650
     action2.actionCategoryEnum = .Rent
     

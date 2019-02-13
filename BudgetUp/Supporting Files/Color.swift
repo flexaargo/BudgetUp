@@ -56,7 +56,7 @@ extension Color {
     case .darkText:
       instanceColor = UIColor(hexString: "2E3131")
     case .affirmation:
-      instanceColor = UIColor(hexString: "5333ED")
+      instanceColor = UIColor(hexString: "2ECC71")
     case .negation:
       instanceColor = UIColor(hexString: "F03434")
     case .custom(hexString: let hexValue, alpha: let opacity):
