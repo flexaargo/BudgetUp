@@ -1,5 +1,5 @@
 //
-//  TransactionCell.swift
+//  ActionCell.swift
 //  BudgetUp
 //
 //  Created by Alex Fargo on 2/8/19.
@@ -8,17 +8,17 @@
 
 import UIKit
 
-class TransactionCell: UITableViewCell {
+class ActionCell: UITableViewCell {
   
-  var transaction: Transaction? {
+  var action: Action? {
     didSet {
       let currentLocale = NSLocale.current
       let currencySymbol = currentLocale.currencySymbol!
-      let sign = transaction!.transactionCategoryEnum == .deposit ? "+" : "-"
+      let sign = action!.actionCategoryEnum == .deposit ? "+" : "-"
       
-      titleLabel.text = transaction!.title
-      amountLabel.text = sign + currencySymbol + String(format: "%.2f", transaction!.amount.magnitude)
-      categoryLabel.text = transaction!.transactionCategory.capitalized(with: currentLocale)
+      titleLabel.text = action!.title
+      amountLabel.text = sign + currencySymbol + String(format: "%.2f", action!.amount.magnitude)
+      categoryLabel.text = action!.actionCetegory.capitalized(with: currentLocale)
     }
   }
   

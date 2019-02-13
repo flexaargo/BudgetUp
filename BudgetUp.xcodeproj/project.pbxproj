@@ -7,14 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		D0B24D86220FC6B100DFF5C2 /* AddTransactionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B24D85220FC6B100DFF5C2 /* AddTransactionViewController.swift */; };
+		D0B24D86220FC6B100DFF5C2 /* AddActionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B24D85220FC6B100DFF5C2 /* AddActionViewController.swift */; };
 		D0C6C05C220CF6EB00D33A93 /* SummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C6C05B220CF6EB00D33A93 /* SummaryView.swift */; };
 		D0C6C05E220CFA2300D33A93 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C6C05D220CFA2300D33A93 /* Color.swift */; };
 		D0C6C060220D037D00D33A93 /* Shadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C6C05F220D037D00D33A93 /* Shadow.swift */; };
 		D0C6C062220E3DAF00D33A93 /* ActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C6C061220E3DAF00D33A93 /* ActivityView.swift */; };
-		D0C6C065220EBB9700D33A93 /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C6C064220EBB9700D33A93 /* Transaction.swift */; };
-		D0C6C067220EBCCD00D33A93 /* TransactionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C6C066220EBCCD00D33A93 /* TransactionCell.swift */; };
-		D0D71D5E221241DE0047357E /* AddTransactionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D71D5D221241DE0047357E /* AddTransactionView.swift */; };
+		D0C6C065220EBB9700D33A93 /* Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C6C064220EBB9700D33A93 /* Action.swift */; };
+		D0C6C067220EBCCD00D33A93 /* ActionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C6C066220EBCCD00D33A93 /* ActionCell.swift */; };
+		D0D71D5E221241DE0047357E /* AddActionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D71D5D221241DE0047357E /* AddActionView.swift */; };
 		D0FEF57622094B7500A08446 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0FEF57522094B7400A08446 /* AppDelegate.swift */; };
 		D0FEF57822094B7500A08446 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0FEF57722094B7500A08446 /* HomeViewController.swift */; };
 		D0FEF57D22094B7600A08446 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D0FEF57C22094B7600A08446 /* Assets.xcassets */; };
@@ -22,14 +22,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		D0B24D85220FC6B100DFF5C2 /* AddTransactionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTransactionViewController.swift; sourceTree = "<group>"; };
+		D0B24D85220FC6B100DFF5C2 /* AddActionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddActionViewController.swift; sourceTree = "<group>"; };
 		D0C6C05B220CF6EB00D33A93 /* SummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryView.swift; sourceTree = "<group>"; };
 		D0C6C05D220CFA2300D33A93 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		D0C6C05F220D037D00D33A93 /* Shadow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shadow.swift; sourceTree = "<group>"; };
 		D0C6C061220E3DAF00D33A93 /* ActivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityView.swift; sourceTree = "<group>"; };
-		D0C6C064220EBB9700D33A93 /* Transaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transaction.swift; sourceTree = "<group>"; };
-		D0C6C066220EBCCD00D33A93 /* TransactionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionCell.swift; sourceTree = "<group>"; };
-		D0D71D5D221241DE0047357E /* AddTransactionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTransactionView.swift; sourceTree = "<group>"; };
+		D0C6C064220EBB9700D33A93 /* Action.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Action.swift; sourceTree = "<group>"; };
+		D0C6C066220EBCCD00D33A93 /* ActionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionCell.swift; sourceTree = "<group>"; };
+		D0D71D5D221241DE0047357E /* AddActionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddActionView.swift; sourceTree = "<group>"; };
 		D0FEF57222094B7400A08446 /* BudgetUp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BudgetUp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0FEF57522094B7400A08446 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D0FEF57722094B7500A08446 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -52,7 +52,7 @@
 		D0C6C063220EBA3A00D33A93 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				D0C6C064220EBB9700D33A93 /* Transaction.swift */,
+				D0C6C064220EBB9700D33A93 /* Action.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -92,8 +92,8 @@
 				D0FEF57E22094B7600A08446 /* LaunchScreen.storyboard */,
 				D0C6C05B220CF6EB00D33A93 /* SummaryView.swift */,
 				D0C6C061220E3DAF00D33A93 /* ActivityView.swift */,
-				D0D71D5D221241DE0047357E /* AddTransactionView.swift */,
-				D0C6C066220EBCCD00D33A93 /* TransactionCell.swift */,
+				D0D71D5D221241DE0047357E /* AddActionView.swift */,
+				D0C6C066220EBCCD00D33A93 /* ActionCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -102,7 +102,7 @@
 			isa = PBXGroup;
 			children = (
 				D0FEF57722094B7500A08446 /* HomeViewController.swift */,
-				D0B24D85220FC6B100DFF5C2 /* AddTransactionViewController.swift */,
+				D0B24D85220FC6B100DFF5C2 /* AddActionViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -187,16 +187,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D0C6C065220EBB9700D33A93 /* Transaction.swift in Sources */,
+				D0C6C065220EBB9700D33A93 /* Action.swift in Sources */,
 				D0FEF57822094B7500A08446 /* HomeViewController.swift in Sources */,
 				D0C6C05E220CFA2300D33A93 /* Color.swift in Sources */,
-				D0B24D86220FC6B100DFF5C2 /* AddTransactionViewController.swift in Sources */,
+				D0B24D86220FC6B100DFF5C2 /* AddActionViewController.swift in Sources */,
 				D0C6C060220D037D00D33A93 /* Shadow.swift in Sources */,
 				D0FEF57622094B7500A08446 /* AppDelegate.swift in Sources */,
 				D0C6C05C220CF6EB00D33A93 /* SummaryView.swift in Sources */,
-				D0C6C067220EBCCD00D33A93 /* TransactionCell.swift in Sources */,
+				D0C6C067220EBCCD00D33A93 /* ActionCell.swift in Sources */,
 				D0C6C062220E3DAF00D33A93 /* ActivityView.swift in Sources */,
-				D0D71D5E221241DE0047357E /* AddTransactionView.swift in Sources */,
+				D0D71D5E221241DE0047357E /* AddActionView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

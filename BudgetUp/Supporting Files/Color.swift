@@ -19,6 +19,7 @@ enum Color {
   case darkBackground
   
   case lightText
+  case intermediateText
   case darkText
   
   case affirmation
@@ -47,9 +48,11 @@ extension Color {
     case .lightBackground:
       instanceColor = UIColor(hexString: "F0F0F0")
     case .darkBackground:
-      instanceColor = UIColor(hexString: "2C3E50")
+      instanceColor = UIColor(hexString: "D8D8D8")
     case .lightText:
       instanceColor = UIColor(hexString: "A5A5A5")
+    case .intermediateText:
+      instanceColor = UIColor(hexString: "464C4C")
     case .darkText:
       instanceColor = UIColor(hexString: "2E3131")
     case .affirmation:

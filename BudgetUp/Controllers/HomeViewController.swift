@@ -10,7 +10,7 @@ import UIKit
 
 class HomeViewController: UIViewController {
   
-  var transactions: [Transaction] = [Transaction]()
+  var actions: [Action] = [Action]()
   
   private let summaryView: SummaryView = SummaryView()
   private let activityView: ActivityView = ActivityView()
@@ -18,7 +18,7 @@ class HomeViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    initTransactionsWithDummyData()
+    initActionsWithDummyData()
     
     navigationItem.title = "BudgetUp"
     
@@ -34,7 +34,7 @@ class HomeViewController: UIViewController {
   }
   
   @objc func addButtonPressed() {
-    let addActivityViewController = AddTransactionViewController()
+    let addActivityViewController = AddActionViewController()
     
     addActivityViewController.modalTransitionStyle = .coverVertical
     addActivityViewController.modalPresentationStyle = .overCurrentContext
@@ -43,7 +43,7 @@ class HomeViewController: UIViewController {
     
     self.present(addActivityViewController, animated: true, completion: nil)
     
-    UIView.animate(withDuration: 0.15, animations: {
+    UIView.animate(withDuration: 0.4, animations: {
       self.navigationController?.navigationBar.barStyle = .default
     })
   }
@@ -78,22 +78,22 @@ class HomeViewController: UIViewController {
       ])
   }
   
-  private func initTransactionsWithDummyData() {
-    var transaction = Transaction()
-    transaction.title = "Lunch with friends"
-    transaction.description = "Went to lunch with friends at In n Out"
-    transaction.amount = -10.24
-    transaction.transactionCategoryEnum = .food
+  private func initActionsWithDummyData() {
+    var action = Action()
+    action.title = "Lunch with friends"
+    action.description = "Went to lunch with friends at In n Out"
+    action.amount = -10.24
+    action.actionCategoryEnum = .food
     
-    transactions.append(transaction)
+    actions.append(action)
     
-    var transaction2 = Transaction()
-    transaction2.title = "Rent"
-    transaction2.description = "Payed apartment rent"
-    transaction2.amount = -650
-    transaction2.transactionCategoryEnum = .rent
+    var action2 = Action()
+    action2.title = "Rent"
+    action2.description = "Payed apartment rent"
+    action2.amount = -650
+    action2.actionCategoryEnum = .rent
     
-    transactions.append(transaction2)
+    actions.append(action2)
   }
 
 }
@@ -107,27 +107,27 @@ extension HomeViewController: UITableViewDelegate {
 
 extension HomeViewController: UITableViewDataSource {
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return transactions.count
+    return actions.count
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    let cell = tableView.dequeueReusableCell(withIdentifier: "TransactionCell", for: indexPath) as! TransactionCell
+    let cell = tableView.dequeueReusableCell(withIdentifier: "ActionCell", for: indexPath) as! ActionCell
     
-    cell.transaction = transactions[indexPath.row]
+    cell.action = actions[indexPath.row]
     
     return cell
   }
 }
 
-extension HomeViewController: AddTransactionDelegate {
-  func addedTransaction(_ transaction: Transaction?) {
-    UIView.animate(withDuration: 0.15, animations: {
+extension HomeViewController: AddActionDelegate {
+  func addedAction(_ action: Action?) {
+    UIView.animate(withDuration: 0.4, animations: {
       self.navigationController?.navigationBar.barStyle = .black
     })
     
-    guard let transaction = transaction else { return }
+    guard let action = action else { return }
     
-    transactions.append(transaction)
+    actions.append(action)
     
     activityView.activityTableView.reloadData()
   }

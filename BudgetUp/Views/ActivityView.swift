@@ -36,7 +36,7 @@ class ActivityView: UIView {
     
     tableView.backgroundColor = Color.lightBackground.value
     
-    tableView.register(TransactionCell.self, forCellReuseIdentifier: "TransactionCell")
+    tableView.register(ActionCell.self, forCellReuseIdentifier: "ActionCell")
     tableView.separatorStyle = .none
     tableView.showsVerticalScrollIndicator = false
     

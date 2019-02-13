@@ -1,5 +1,5 @@
 //
-//  AddTransactionViewController.swift
+//  AddActionViewController.swift
 //  BudgetUp
 //
 //  Created by Alex Fargo on 2/9/19.
@@ -8,31 +8,54 @@
 
 import UIKit
 
-protocol AddTransactionDelegate {
-  func addedTransaction(_ transaction: Transaction?)
+protocol AddActionDelegate {
+  func addedAction(_ action: Action?)
 }
 
-class AddTransactionViewController: UIViewController {
+class AddActionViewController: UIViewController {
   
-  var delegate: AddTransactionDelegate?
+  var delegate: AddActionDelegate?
   
-  let addActivityView = AddTransactionView()
+  let standaloneNavigationItem: UINavigationItem = {
+    let navigationItem = UINavigationItem()
+    
+    navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(cancelButtonPressed))
+    navigationItem.leftBarButtonItem?.tintColor = Color.negation.value
+    navigationItem.title = "New Action"
+    
+    return navigationItem
+  }()
+  
+  lazy var navigationBar: UINavigationBar = {
+    let navigationBar = UINavigationBar()
+    
+    navigationBar.isTranslucent = false
+    navigationBar.delegate = self
+    navigationBar.backgroundColor = .white
+    navigationBar.items = [standaloneNavigationItem]
+    
+    navigationBar.translatesAutoresizingMaskIntoConstraints = false
+    
+    return navigationBar
+  }()
+  
+  let addActivityView = AddActionView()
   
   override func viewDidLoad() {
     super.viewDidLoad()
     
     view.backgroundColor = Color.lightBackground.value
     
+    view.addSubview(navigationBar)
     view.addSubview(addActivityView)
     
-    addActivityView.cancelButton.addTarget(self, action: #selector(cancelButtonPressed), for: .touchUpInside)
     addActivityView.detailsTextView.delegate = self
     
     dismissKeyboardOnTap()
   }
   
   @objc private func cancelButtonPressed() {
-    self.delegate?.addedTransaction(nil)
+    self.delegate?.addedAction(nil)
     dismissKeyboard()
     dismiss(animated: true, completion: nil)
   }
@@ -47,15 +70,27 @@ class AddTransactionViewController: UIViewController {
   
   private func setupLayout() {
     NSLayoutConstraint.activate([
+      navigationBar.leftAnchor.constraint(equalTo: view.leftAnchor),
+      navigationBar.rightAnchor.constraint(equalTo: view.rightAnchor),
+      navigationBar.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor)
+      ])
+    
+    NSLayoutConstraint.activate([
       addActivityView.leftAnchor.constraint(equalTo: view.leftAnchor),
       addActivityView.rightAnchor.constraint(equalTo: view.rightAnchor),
-      addActivityView.topAnchor.constraint(equalTo: view.topAnchor)
+      addActivityView.topAnchor.constraint(equalTo: navigationBar.bottomAnchor)
       ])
   }
   
 }
 
-extension AddTransactionViewController: UITextViewDelegate {
+extension AddActionViewController: UINavigationBarDelegate {
+  func position(for bar: UIBarPositioning) -> UIBarPosition {
+    return .topAttached
+  }
+}
+
+extension AddActionViewController: UITextViewDelegate {
   // This code allows a textView to have "placeholder" text in it by faking it
   func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
     // Combine the text view text and the replacement text to
@@ -66,7 +101,7 @@ extension AddTransactionViewController: UITextViewDelegate {
     // If the updated text view will be empty, add the placeholder
     // and set the cursor to the beginning of the text view
     if updatedText.isEmpty {
-      textView.text = "Details"
+      textView.text = "Any details?"
       textView.textColor = Color.lightText.value
       
       textView.selectedTextRange = textView.textRange(from: textView.beginningOfDocument, to: textView.beginningOfDocument)

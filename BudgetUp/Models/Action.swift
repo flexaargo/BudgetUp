@@ -1,5 +1,5 @@
 //
-//  Transaction.swift
+//  Action.swift
 //  BudgetUp
 //
 //  Created by Alex Fargo on 2/8/19.
@@ -8,7 +8,8 @@
 
 import Foundation
 
-enum TransactionCategory: String {
+enum ActionCategory: String {
+  case invalid = "Category"
   case food
   case shopping
   case bills
@@ -19,18 +20,18 @@ enum TransactionCategory: String {
   case other
 }
 
-struct Transaction {
+struct Action {
   var title: String = ""
   var description: String = ""
   var amount: Double = 0.00
   var date: NSDate = NSDate()
-  var transactionCategory: String = TransactionCategory.other.rawValue
-  var transactionCategoryEnum: TransactionCategory {
+  var actionCetegory: String = ActionCategory.other.rawValue
+  var actionCategoryEnum: ActionCategory {
     get {
-      return TransactionCategory(rawValue: transactionCategory)!
+      return ActionCategory(rawValue: actionCetegory)!
     }
     set {
-      transactionCategory = newValue.rawValue
+      actionCetegory = newValue.rawValue
     }
   }
 }
