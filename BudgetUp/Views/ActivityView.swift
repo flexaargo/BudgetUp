@@ -9,7 +9,7 @@
 import UIKit
 
 class ActivityView: UIView {
-  private let activityLabel: UILabel = {
+  let activityLabel: UILabel = {
     let label = UILabel()
     
     label.text = "Activity"
@@ -21,7 +21,7 @@ class ActivityView: UIView {
     return label
   }()
   
-  private let addButton: UIButton = {
+  let addButton: UIButton = {
     let button = UIButton(type: .custom)
     
     button.setImage(UIImage(named: "addButton"), for: .normal)

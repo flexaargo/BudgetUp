@@ -27,8 +27,30 @@ class HomeViewController: UIViewController {
     
     summaryView.setSummaryText(availableBalance: 734.10, budgetAmount: 1000)
     
+    activityView.addButton.addTarget(self, action: #selector(addButtonPressed), for: UIControl.Event.touchUpInside)
+    
     activityView.activityTableView.delegate = self
     activityView.activityTableView.dataSource = self
+  }
+  
+  @objc func addButtonPressed() {
+    let addActivityViewController = AddTransactionViewController()
+    
+    addActivityViewController.modalTransitionStyle = .coverVertical
+    addActivityViewController.modalPresentationStyle = .overCurrentContext
+    
+    addActivityViewController.delegate = self
+    
+    self.present(addActivityViewController, animated: true, completion: nil)
+    
+    UIView.animate(withDuration: 0.15, animations: {
+      self.navigationController?.navigationBar.barStyle = .default
+    })
+  }
+  
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
+    self.navigationController?.navigationBar.barStyle = .black
   }
   
   override func viewWillLayoutSubviews() {
@@ -42,14 +64,14 @@ class HomeViewController: UIViewController {
     guard let navigationController = navigationController else { return }
     
     NSLayoutConstraint.activate([
-      summaryView.topAnchor.constraint(equalTo: navigationController.navigationBar.bottomAnchor, constant: 45),
+      summaryView.topAnchor.constraint(equalTo: navigationController.navigationBar.bottomAnchor, constant: 35),
       summaryView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
       summaryView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
       summaryView.bottomAnchor.constraint(lessThanOrEqualTo: view.bottomAnchor, constant: -16)
       ])
     
     NSLayoutConstraint.activate([
-      activityView.topAnchor.constraint(equalTo: summaryView.bottomAnchor, constant: 36),
+      activityView.topAnchor.constraint(equalTo: summaryView.bottomAnchor, constant: 35),
       activityView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -8),
       activityView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 8),
       activityView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -8)
@@ -95,6 +117,18 @@ extension HomeViewController: UITableViewDataSource {
     
     return cell
   }
-  
-  
+}
+
+extension HomeViewController: AddTransactionDelegate {
+  func addedTransaction(_ transaction: Transaction?) {
+    UIView.animate(withDuration: 0.15, animations: {
+      self.navigationController?.navigationBar.barStyle = .black
+    })
+    
+    guard let transaction = transaction else { return }
+    
+    transactions.append(transaction)
+    
+    activityView.activityTableView.reloadData()
+  }
 }

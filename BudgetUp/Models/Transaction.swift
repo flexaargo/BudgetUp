@@ -14,6 +14,7 @@ enum TransactionCategory: String {
   case bills
   case entertainment
   case rent
+  // rename to revenue? income? profit?
   case deposit
   case other
 }

@@ -9,7 +9,7 @@
 import UIKit
 
 class SummaryView: UIView {
-  private let summaryTextView: UITextView = {
+  let summaryTextView: UITextView = {
     let textView = UITextView()
     
     textView.isEditable = false
@@ -22,7 +22,7 @@ class SummaryView: UIView {
     return textView
   }()
   
-  private let remainingLabel: UILabel = {
+  let remainingLabel: UILabel = {
     let label = UILabel()
     
     label.text = "Remaining"
@@ -80,7 +80,7 @@ class SummaryView: UIView {
     centFormatter.minimumFractionDigits = 2
     centFormatter.minimumIntegerDigits = 0
     
-    let primaryAttributes = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 50.0, weight: .medium)]
+    let primaryAttributes = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 50.0, weight: .semibold)]
     let secondaryAttributes = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 25.0, weight: .medium)]
     
     let summary = NSMutableAttributedString()

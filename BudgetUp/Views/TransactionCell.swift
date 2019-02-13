@@ -14,7 +14,7 @@ class TransactionCell: UITableViewCell {
     didSet {
       let currentLocale = NSLocale.current
       let currencySymbol = currentLocale.currencySymbol!
-      let sign = transaction!.amount > 0 ? "+" : "-"
+      let sign = transaction!.transactionCategoryEnum == .deposit ? "+" : "-"
       
       titleLabel.text = transaction!.title
       amountLabel.text = sign + currencySymbol + String(format: "%.2f", transaction!.amount.magnitude)
@@ -37,7 +37,7 @@ class TransactionCell: UITableViewCell {
   let titleLabel: UILabel = {
     let label = UILabel()
     
-    label.font = UIFont.systemFont(ofSize: 20)
+    label.font = UIFont.systemFont(ofSize: 20, weight: UIFont.Weight.medium)
     label.textColor = Color.darkText.value
     
     label.text = "D:"
@@ -50,7 +50,7 @@ class TransactionCell: UITableViewCell {
   let amountLabel: UILabel = {
     let label = UILabel()
     
-    label.font = UIFont.systemFont(ofSize: 20)
+    label.font = UIFont.systemFont(ofSize: 20, weight: .semibold)
     label.textColor = Color.darkText.value
     
     label.text = "D:"
