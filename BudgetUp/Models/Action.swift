@@ -8,16 +8,15 @@
 
 import Foundation
 
-enum ActionCategory: String {
-  case invalid = "Category"
-  case food
-  case shopping
-  case bills
-  case entertainment
-  case rent
+enum ActionCategory: String, CaseIterable {
+  case Food
+  case Shopping
+  case Bills
+  case Entertainment
+  case Rent
   // rename to revenue? income? profit?
-  case deposit
-  case other
+  case Deposit
+  case Other
 }
 
 struct Action {
@@ -25,13 +24,13 @@ struct Action {
   var description: String = ""
   var amount: Double = 0.00
   var date: NSDate = NSDate()
-  var actionCetegory: String = ActionCategory.other.rawValue
+  var actionCategory: String = ActionCategory.Other.rawValue
   var actionCategoryEnum: ActionCategory {
     get {
-      return ActionCategory(rawValue: actionCetegory)!
+      return ActionCategory(rawValue: actionCategory)!
     }
     set {
-      actionCetegory = newValue.rawValue
+      actionCategory = newValue.rawValue
     }
   }
 }

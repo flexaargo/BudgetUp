@@ -14,11 +14,11 @@ class ActionCell: UITableViewCell {
     didSet {
       let currentLocale = NSLocale.current
       let currencySymbol = currentLocale.currencySymbol!
-      let sign = action!.actionCategoryEnum == .deposit ? "+" : "-"
+      let sign = action!.actionCategoryEnum == .Deposit ? "+" : "-"
       
       titleLabel.text = action!.title
       amountLabel.text = sign + currencySymbol + String(format: "%.2f", action!.amount.magnitude)
-      categoryLabel.text = action!.actionCetegory.capitalized(with: currentLocale)
+      categoryLabel.text = action!.actionCategory.capitalized(with: currentLocale)
     }
   }
   

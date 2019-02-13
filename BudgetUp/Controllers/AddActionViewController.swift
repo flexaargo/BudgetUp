@@ -14,7 +14,7 @@ protocol AddActionDelegate {
 
 class AddActionViewController: UIViewController {
   
-  var delegate: AddActionDelegate?
+  var addActionDelegate: AddActionDelegate?
   
   let standaloneNavigationItem: UINavigationItem = {
     let navigationItem = UINavigationItem()
@@ -39,6 +39,23 @@ class AddActionViewController: UIViewController {
     return navigationBar
   }()
   
+  let datePicker: UIDatePicker = {
+    let datePicker = UIDatePicker()
+    
+    datePicker.datePickerMode = .date
+    
+    return datePicker
+  }()
+  
+  lazy var categoryPicker: UIPickerView = {
+    let picker = UIPickerView()
+    
+    picker.delegate = self
+    picker.dataSource = self
+    
+    return picker
+  }()
+  
   let addActivityView = AddActionView()
   
   override func viewDidLoad() {
@@ -50,14 +67,36 @@ class AddActionViewController: UIViewController {
     view.addSubview(addActivityView)
     
     addActivityView.detailsTextView.delegate = self
+    addActivityView.titleTextField.delegate = self
+    addActivityView.categoryField.addTarget(self, action: #selector(beganEditingCategory(_:)), for: .editingDidBegin)
+    addActivityView.dateField.addTarget(self, action: #selector(beganEditingDate(_:)), for: .editingDidBegin)
+    
+    datePicker.addTarget(self, action: #selector(selectedDate(_:)), for: .valueChanged)
+    
+    addActivityView.dateField.inputView = datePicker
+    addActivityView.categoryField.inputView = categoryPicker
     
     dismissKeyboardOnTap()
   }
   
   @objc private func cancelButtonPressed() {
-    self.delegate?.addedAction(nil)
+    self.addActionDelegate?.addedAction(nil)
     dismissKeyboard()
     dismiss(animated: true, completion: nil)
+  }
+  
+  @objc private func selectedDate(_ datePicker: UIDatePicker) {
+    let dateFormatter = DateFormatter()
+    dateFormatter.dateFormat = "MMM d, yyyy"
+    addActivityView.dateField.text = dateFormatter.string(from: datePicker.date)
+  }
+  
+  @objc private func beganEditingCategory(_ textField: UITextField) {
+    textField.text = ActionCategory.allCases[0].rawValue
+  }
+  
+  @objc private func beganEditingDate(_ textField: UITextField) {
+    textField.text = textField.placeholder
   }
   
   override func viewDidAppear(_ animated: Bool) {
@@ -84,9 +123,36 @@ class AddActionViewController: UIViewController {
   
 }
 
+extension AddActionViewController: UIPickerViewDelegate {
+  func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+    return ActionCategory.allCases[row].rawValue
+  }
+  
+  func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+    addActivityView.categoryField.text = ActionCategory.allCases[row].rawValue
+  }
+}
+
+extension AddActionViewController: UIPickerViewDataSource {
+  func numberOfComponents(in pickerView: UIPickerView) -> Int {
+    return 1
+  }
+  
+  func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+    return ActionCategory.allCases.count
+  }
+}
+
 extension AddActionViewController: UINavigationBarDelegate {
   func position(for bar: UIBarPositioning) -> UIBarPosition {
     return .topAttached
+  }
+}
+
+extension AddActionViewController: UITextFieldDelegate {
+  func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+    textField.resignFirstResponder()
+    return true
   }
 }
 
