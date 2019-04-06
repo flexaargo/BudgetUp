@@ -146,7 +146,9 @@ class AddActionViewController: UIViewController {
     let dateFormatter = DateFormatter()
     dateFormatter.dateFormat = "MMM d, yyyy"
     
-    textField.text = dateFormatter.string(from: today)
+    if textField.text!.isEmpty {
+      textField.text = dateFormatter.string(from: today)
+    }
     action.date = NSDate(timeIntervalSince1970: today.timeIntervalSince1970)
   }
   

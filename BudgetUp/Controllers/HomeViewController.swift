@@ -18,14 +18,12 @@ class HomeViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    initActionsWithDummyData()
-    
     navigationItem.title = "BudgetUp"
     
     view.addSubview(summaryView)
     view.addSubview(activityView)
     
-    summaryView.setSummaryText(availableBalance: 734.10, budgetAmount: 1000)
+    summaryView.setSummaryText(availableBalance: 200, budgetAmount: 200)
     
     activityView.addButton.addTarget(self, action: #selector(addButtonPressed), for: UIControl.Event.touchUpInside)
     
@@ -76,24 +74,6 @@ class HomeViewController: UIViewController {
       activityView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 8),
       activityView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -8)
       ])
-  }
-  
-  private func initActionsWithDummyData() {
-    var action = Action()
-    action.title = "Lunch with friends"
-    action.details = "Went to lunch with friends at In n Out"
-    action.amount = -10.24
-    action.actionCategoryEnum = .Food
-    
-    actions.append(action)
-    
-    var action2 = Action()
-    action2.title = "Rent"
-    action2.details = "Payed apartment rent"
-    action2.amount = -650
-    action2.actionCategoryEnum = .Rent
-    
-    actions.append(action2)
   }
 
 }
