@@ -7,10 +7,12 @@
 //
 
 import UIKit
+import RealmSwift
 
 class HomeViewController: UIViewController {
+  let realm = try! Realm()
   
-  var actions: [Action] = [Action]()
+  var actions: Results<Action>?
   
   private let summaryView: SummaryView = SummaryView()
   private let activityView: ActivityView = ActivityView()
@@ -29,6 +31,8 @@ class HomeViewController: UIViewController {
     
     activityView.activityTableView.delegate = self
     activityView.activityTableView.dataSource = self
+    
+    loadActivity()
   }
   
   @objc func addButtonPressed() {
@@ -53,8 +57,25 @@ class HomeViewController: UIViewController {
   
   override func viewWillLayoutSubviews() {
     super.viewWillLayoutSubviews()
-    
     setupLayout()
+  }
+  
+  func save (action: Action) {
+    do {
+      try realm.write {
+        realm.add(action)
+      }
+    } catch {
+      print("Error saving the new action, \(error)")
+    }
+    
+    activityView.activityTableView.reloadData()
+  }
+  
+  func loadActivity () {
+    actions = realm.objects(Action.self)
+    
+    activityView.activityTableView.reloadData()
   }
   
   private func setupLayout() {
@@ -87,13 +108,15 @@ extension HomeViewController: UITableViewDelegate {
 
 extension HomeViewController: UITableViewDataSource {
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return actions.count
+    return actions?.count ?? 0
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withIdentifier: "ActionCell", for: indexPath) as! ActionCell
     
-    cell.action = actions[indexPath.row]
+    if let action = actions?[indexPath.row] {
+      cell.action = action
+    }
     
     return cell
   }
@@ -101,15 +124,19 @@ extension HomeViewController: UITableViewDataSource {
 
 extension HomeViewController: AddActionDelegate {
   func addedAction(_ action: Action?) {
+    // Animate the status bar back to white
     UIView.animate(withDuration: 0.4, animations: {
       self.navigationController?.navigationBar.barStyle = .black
     })
     
+    // Check to see that action is not null
     guard let action = action else { return }
     
-    actions.append(action)
+//    // Append the action to the list
+//    actions.append(action)
     
-    activityView.activityTableView.reloadData()
+    // Save the action
+    self.save(action: action)
   }
 }
 

@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import RealmSwift
 
 enum ActionCategory: String, CaseIterable {
   case Food
@@ -19,12 +20,12 @@ enum ActionCategory: String, CaseIterable {
   case Other
 }
 
-struct Action {
-  var title: String = ""
-  var details: String = ""
-  var amount: Double = 0.00
-  var date: NSDate?
-  var actionCategory: String = ActionCategory.Other.rawValue
+class Action: Object {
+  @objc dynamic var title: String = ""
+  @objc dynamic var details: String = ""
+  @objc dynamic var amount: Double = 0.00
+  @objc dynamic var date: NSDate?
+  @objc dynamic var actionCategory: String = ActionCategory.Other.rawValue
   var actionCategoryEnum: ActionCategory {
     get {
       return ActionCategory(rawValue: actionCategory)!
