@@ -147,9 +147,9 @@ class AddActionView: UIView {
     setupLayout()
   }
   
-  override func layoutSubviews() {
-    setupLayout()
-  }
+//  override func layoutSubviews() {
+//    setupLayout()
+//  }
   
   private func setupLayout() {
     NSLayoutConstraint.activate([

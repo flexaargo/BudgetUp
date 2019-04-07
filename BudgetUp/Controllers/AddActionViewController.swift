@@ -25,7 +25,7 @@ class AddActionViewController: UIViewController {
     navigationItem.leftBarButtonItem?.tintColor = Color.negation.value
     navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Confirm", style: .plain, target: self, action: #selector(confirmButtonPressed))
     navigationItem.rightBarButtonItem?.tintColor = Color.affirmation.value
-    navigationItem.title = "New Action"
+//    navigationItem.title = "New Action"
     
     return navigationItem
   }()
@@ -138,10 +138,16 @@ class AddActionViewController: UIViewController {
   }
   
   @objc private func beganEditingCategory(_ textField: UITextField) {
-    textField.text = ActionCategory.allCases[0].rawValue
+    // When editing the category for the first time, set the text to be equal to the
+    // first category in the picker
+    if textField.text!.isEmpty {
+      textField.text = ActionCategory.allCases[0].rawValue
+    }
   }
   
   @objc private func beganEditingDate(_ textField: UITextField) {
+    // When editing the date for the first time, set the date to be equal to the
+    // current date
     let today = Date()
     let dateFormatter = DateFormatter()
     dateFormatter.dateFormat = "MMM d, yyyy"
@@ -154,10 +160,12 @@ class AddActionViewController: UIViewController {
   
   override func viewDidAppear(_ animated: Bool) {
     addActionView.titleTextField.becomeFirstResponder()
+    super.viewDidAppear(animated)
   }
   
   override func viewWillLayoutSubviews() {
     setupLayout()
+    super.viewWillLayoutSubviews()
   }
   
   private func setupLayout() {

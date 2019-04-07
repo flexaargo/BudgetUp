@@ -19,9 +19,13 @@
 		D0FEF57822094B7500A08446 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0FEF57722094B7500A08446 /* HomeViewController.swift */; };
 		D0FEF57D22094B7600A08446 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D0FEF57C22094B7600A08446 /* Assets.xcassets */; };
 		D0FEF58022094B7600A08446 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D0FEF57E22094B7600A08446 /* LaunchScreen.storyboard */; };
+		DFB61CDF1E9D0E98C03C64F9 /* Pods_BudgetUp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02DAE4F117B33263728F3911 /* Pods_BudgetUp.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		02DAE4F117B33263728F3911 /* Pods_BudgetUp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BudgetUp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4EB5DB6F26771B1CB7FAA989 /* Pods-BudgetUp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BudgetUp.release.xcconfig"; path = "Target Support Files/Pods-BudgetUp/Pods-BudgetUp.release.xcconfig"; sourceTree = "<group>"; };
+		524680E6AEF0E1660E403C20 /* Pods-BudgetUp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BudgetUp.debug.xcconfig"; path = "Target Support Files/Pods-BudgetUp/Pods-BudgetUp.debug.xcconfig"; sourceTree = "<group>"; };
 		D0B24D85220FC6B100DFF5C2 /* AddActionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddActionViewController.swift; sourceTree = "<group>"; };
 		D0C6C05B220CF6EB00D33A93 /* SummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryView.swift; sourceTree = "<group>"; };
 		D0C6C05D220CFA2300D33A93 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
@@ -43,12 +47,23 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DFB61CDF1E9D0E98C03C64F9 /* Pods_BudgetUp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C2B13EC58B90F2BDA7D5F9F1 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				524680E6AEF0E1660E403C20 /* Pods-BudgetUp.debug.xcconfig */,
+				4EB5DB6F26771B1CB7FAA989 /* Pods-BudgetUp.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		D0C6C063220EBA3A00D33A93 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -62,6 +77,8 @@
 			children = (
 				D0FEF57422094B7400A08446 /* BudgetUp */,
 				D0FEF57322094B7400A08446 /* Products */,
+				C2B13EC58B90F2BDA7D5F9F1 /* Pods */,
+				E4B8E8625F74EC129CA0D503 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -117,6 +134,14 @@
 			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		E4B8E8625F74EC129CA0D503 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				02DAE4F117B33263728F3911 /* Pods_BudgetUp.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -124,9 +149,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D0FEF58422094B7600A08446 /* Build configuration list for PBXNativeTarget "BudgetUp" */;
 			buildPhases = (
+				7CC406A8FBF3570EA4765643 /* [CP] Check Pods Manifest.lock */,
 				D0FEF56E22094B7400A08446 /* Sources */,
 				D0FEF56F22094B7400A08446 /* Frameworks */,
 				D0FEF57022094B7400A08446 /* Resources */,
+				30B7DC8B6C2A61D6DE83B371 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -181,6 +208,55 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		30B7DC8B6C2A61D6DE83B371 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-BudgetUp/Pods-BudgetUp-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
+				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-BudgetUp/Pods-BudgetUp-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7CC406A8FBF3570EA4765643 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-BudgetUp-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		D0FEF56E22094B7400A08446 /* Sources */ = {
@@ -332,6 +408,7 @@
 		};
 		D0FEF58522094B7600A08446 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 524680E6AEF0E1660E403C20 /* Pods-BudgetUp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -351,6 +428,7 @@
 		};
 		D0FEF58622094B7600A08446 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4EB5DB6F26771B1CB7FAA989 /* Pods-BudgetUp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
