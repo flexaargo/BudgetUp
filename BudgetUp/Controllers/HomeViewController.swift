@@ -11,8 +11,10 @@ import RealmSwift
 
 class HomeViewController: UIViewController {
   let realm = try! Realm()
+  let dataFilePath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent("BudgetInfo.plist")
   
   var actions: Results<Action>?
+  var budgetInfo: BudgetInfo?
   
   private let summaryView: SummaryView = SummaryView()
   private let activityView: ActivityView = ActivityView()
@@ -25,13 +27,12 @@ class HomeViewController: UIViewController {
     view.addSubview(summaryView)
     view.addSubview(activityView)
     
-    summaryView.setSummaryText(availableBalance: 200, budgetAmount: 200)
-    
     activityView.addButton.addTarget(self, action: #selector(addButtonPressed), for: UIControl.Event.touchUpInside)
     
     activityView.activityTableView.delegate = self
     activityView.activityTableView.dataSource = self
     
+    loadSummary()
     loadActivity()
   }
   
@@ -76,6 +77,36 @@ class HomeViewController: UIViewController {
     actions = realm.objects(Action.self)
     
     activityView.activityTableView.reloadData()
+  }
+  
+  func saveSummary() {
+    let encoder = PropertyListEncoder()
+    do {
+      let data = try encoder.encode(self.budgetInfo)
+      try data.write(to: self.dataFilePath!)
+    } catch {
+      print("Error encoding budget info, \(error)")
+    }
+    
+    summaryView.setSummaryText(availableBalance: budgetInfo!.remaining, budgetAmount: budgetInfo!.budget)
+  }
+  
+  func loadSummary() {
+    if let data = try? Data(contentsOf: dataFilePath!) {
+      let decoder = PropertyListDecoder()
+      do {
+        budgetInfo = try decoder.decode(BudgetInfo.self, from: data)
+      } catch {
+        print("Error decoding budget info, \(error)")
+      }
+    }
+    
+    if budgetInfo == nil {
+      budgetInfo = BudgetInfo()
+      saveSummary()
+    }
+    
+    summaryView.setSummaryText(availableBalance: budgetInfo!.remaining, budgetAmount: budgetInfo!.budget)
   }
   
   private func setupLayout() {

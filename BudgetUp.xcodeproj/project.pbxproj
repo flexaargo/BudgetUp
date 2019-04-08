@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D0A094E4225AAE0700AC16B0 /* BudgetInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A094E3225AAE0700AC16B0 /* BudgetInfo.swift */; };
 		D0B24D86220FC6B100DFF5C2 /* AddActionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B24D85220FC6B100DFF5C2 /* AddActionViewController.swift */; };
 		D0C6C05C220CF6EB00D33A93 /* SummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C6C05B220CF6EB00D33A93 /* SummaryView.swift */; };
 		D0C6C05E220CFA2300D33A93 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C6C05D220CFA2300D33A93 /* Color.swift */; };
@@ -26,6 +27,7 @@
 		02DAE4F117B33263728F3911 /* Pods_BudgetUp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BudgetUp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4EB5DB6F26771B1CB7FAA989 /* Pods-BudgetUp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BudgetUp.release.xcconfig"; path = "Target Support Files/Pods-BudgetUp/Pods-BudgetUp.release.xcconfig"; sourceTree = "<group>"; };
 		524680E6AEF0E1660E403C20 /* Pods-BudgetUp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BudgetUp.debug.xcconfig"; path = "Target Support Files/Pods-BudgetUp/Pods-BudgetUp.debug.xcconfig"; sourceTree = "<group>"; };
+		D0A094E3225AAE0700AC16B0 /* BudgetInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetInfo.swift; sourceTree = "<group>"; };
 		D0B24D85220FC6B100DFF5C2 /* AddActionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddActionViewController.swift; sourceTree = "<group>"; };
 		D0C6C05B220CF6EB00D33A93 /* SummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryView.swift; sourceTree = "<group>"; };
 		D0C6C05D220CFA2300D33A93 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
@@ -60,7 +62,6 @@
 				524680E6AEF0E1660E403C20 /* Pods-BudgetUp.debug.xcconfig */,
 				4EB5DB6F26771B1CB7FAA989 /* Pods-BudgetUp.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -68,6 +69,7 @@
 			isa = PBXGroup;
 			children = (
 				D0C6C064220EBB9700D33A93 /* Action.swift */,
+				D0A094E3225AAE0700AC16B0 /* BudgetInfo.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -272,6 +274,7 @@
 				D0C6C05C220CF6EB00D33A93 /* SummaryView.swift in Sources */,
 				D0C6C067220EBCCD00D33A93 /* ActionCell.swift in Sources */,
 				D0C6C062220E3DAF00D33A93 /* ActivityView.swift in Sources */,
+				D0A094E4225AAE0700AC16B0 /* BudgetInfo.swift in Sources */,
 				D0D71D5E221241DE0047357E /* AddActionView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
