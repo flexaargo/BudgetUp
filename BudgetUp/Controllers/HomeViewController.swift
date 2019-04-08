@@ -163,11 +163,17 @@ extension HomeViewController: AddActionDelegate {
     // Check to see that action is not null
     guard let action = action else { return }
     
-//    // Append the action to the list
-//    actions.append(action)
-    
     // Save the action
     self.save(action: action)
+    
+    // Change the remaining amount in the budget and save the summary
+    if action.actionCategoryEnum == .Deposit {
+      budgetInfo?.remaining += action.amount
+    } else {
+      budgetInfo?.remaining -= action.amount
+    }
+    
+    saveSummary()
   }
 }
 
