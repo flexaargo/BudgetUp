@@ -9,6 +9,6 @@
 import Foundation
 
 class BudgetInfo: Codable {
-  var remaining: Double = 0.0
+  var difference: Double = 0.0
   var budget: Int = 0
 }

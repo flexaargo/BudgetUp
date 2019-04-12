@@ -88,7 +88,7 @@ class HomeViewController: UIViewController {
       print("Error encoding budget info, \(error)")
     }
     
-    summaryView.setSummaryText(availableBalance: budgetInfo!.remaining, budgetAmount: budgetInfo!.budget)
+    summaryView.setSummaryText(budgetInfo!)
   }
   
   func loadSummary() {
@@ -106,7 +106,7 @@ class HomeViewController: UIViewController {
       saveSummary()
     }
     
-    summaryView.setSummaryText(availableBalance: budgetInfo!.remaining, budgetAmount: budgetInfo!.budget)
+    summaryView.setSummaryText(budgetInfo!)
   }
   
   private func setupLayout() {
@@ -114,14 +114,14 @@ class HomeViewController: UIViewController {
     guard let navigationController = navigationController else { return }
     
     NSLayoutConstraint.activate([
-      summaryView.topAnchor.constraint(equalTo: navigationController.navigationBar.bottomAnchor, constant: 35),
+      summaryView.topAnchor.constraint(equalTo: navigationController.navigationBar.bottomAnchor, constant: 24),
       summaryView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
       summaryView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
       summaryView.bottomAnchor.constraint(lessThanOrEqualTo: view.bottomAnchor, constant: -16)
       ])
     
     NSLayoutConstraint.activate([
-      activityView.topAnchor.constraint(equalTo: summaryView.bottomAnchor, constant: 35),
+      activityView.topAnchor.constraint(equalTo: summaryView.bottomAnchor, constant: 24),
       activityView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -8),
       activityView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 8),
       activityView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -8)
@@ -168,9 +168,9 @@ extension HomeViewController: AddActionDelegate {
     
     // Change the remaining amount in the budget and save the summary
     if action.actionCategoryEnum == .Deposit {
-      budgetInfo?.remaining += action.amount
+      budgetInfo?.difference += action.amount
     } else {
-      budgetInfo?.remaining -= action.amount
+      budgetInfo?.difference -= action.amount
     }
     
     saveSummary()
