@@ -33,6 +33,16 @@ class SummaryView: UIView {
     return view
   }()
   
+  let editButton: UIButton = {
+    let button = UIButton(type: .custom)
+    
+    button.setImage(#imageLiteral(resourceName: "editIcon"), for: .normal)
+    
+    button.translatesAutoresizingMaskIntoConstraints = false
+    
+    return button
+  }()
+  
   let summaryTextView: UITextView = {
     let textView = UITextView()
     
@@ -68,6 +78,7 @@ class SummaryView: UIView {
     addSubview(summaryCard)
     summaryCard.addSubview(summaryTextView)
     summaryCard.addSubview(remainingLabel)
+    summaryCard.addSubview(editButton)
     
     setupLayout()
   }
@@ -91,6 +102,12 @@ class SummaryView: UIView {
       summaryCard.leadingAnchor.constraint(equalTo: leadingAnchor),
       summaryCard.bottomAnchor.constraint(equalTo: bottomAnchor),
       summaryCard.trailingAnchor.constraint(equalTo: trailingAnchor)
+    ])
+    
+    NSLayoutConstraint.activate([
+      editButton.topAnchor.constraint(equalTo: summaryCard.topAnchor, constant: 4),
+      editButton.trailingAnchor.constraint(equalTo: summaryCard.trailingAnchor, constant: -4),
+      editButton.widthAnchor.constraint(equalTo: editButton.heightAnchor)
     ])
     
     NSLayoutConstraint.activate([

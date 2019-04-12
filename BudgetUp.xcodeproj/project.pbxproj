@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D09115B3226037D700177399 /* EditBudgetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D09115B2226037D700177399 /* EditBudgetViewController.swift */; };
+		D09115B522603CD500177399 /* EditBudgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D09115B422603CD500177399 /* EditBudgetView.swift */; };
 		D0A094E4225AAE0700AC16B0 /* BudgetInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A094E3225AAE0700AC16B0 /* BudgetInfo.swift */; };
 		D0B24D86220FC6B100DFF5C2 /* AddActionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B24D85220FC6B100DFF5C2 /* AddActionViewController.swift */; };
 		D0B731CB22601C010037659F /* GradientNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B731CA22601C010037659F /* GradientNavigationController.swift */; };
@@ -28,6 +30,8 @@
 		02DAE4F117B33263728F3911 /* Pods_BudgetUp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BudgetUp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4EB5DB6F26771B1CB7FAA989 /* Pods-BudgetUp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BudgetUp.release.xcconfig"; path = "Target Support Files/Pods-BudgetUp/Pods-BudgetUp.release.xcconfig"; sourceTree = "<group>"; };
 		524680E6AEF0E1660E403C20 /* Pods-BudgetUp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BudgetUp.debug.xcconfig"; path = "Target Support Files/Pods-BudgetUp/Pods-BudgetUp.debug.xcconfig"; sourceTree = "<group>"; };
+		D09115B2226037D700177399 /* EditBudgetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditBudgetViewController.swift; sourceTree = "<group>"; };
+		D09115B422603CD500177399 /* EditBudgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditBudgetView.swift; sourceTree = "<group>"; };
 		D0A094E3225AAE0700AC16B0 /* BudgetInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetInfo.swift; sourceTree = "<group>"; };
 		D0B24D85220FC6B100DFF5C2 /* AddActionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddActionViewController.swift; sourceTree = "<group>"; };
 		D0B731CA22601C010037659F /* GradientNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientNavigationController.swift; sourceTree = "<group>"; };
@@ -115,6 +119,7 @@
 				D0C6C061220E3DAF00D33A93 /* ActivityView.swift */,
 				D0D71D5D221241DE0047357E /* AddActionView.swift */,
 				D0C6C066220EBCCD00D33A93 /* ActionCell.swift */,
+				D09115B422603CD500177399 /* EditBudgetView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -125,6 +130,7 @@
 				D0FEF57722094B7500A08446 /* HomeViewController.swift */,
 				D0B24D85220FC6B100DFF5C2 /* AddActionViewController.swift */,
 				D0B731CA22601C010037659F /* GradientNavigationController.swift */,
+				D09115B2226037D700177399 /* EditBudgetViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -268,6 +274,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D09115B3226037D700177399 /* EditBudgetViewController.swift in Sources */,
 				D0C6C065220EBB9700D33A93 /* Action.swift in Sources */,
 				D0FEF57822094B7500A08446 /* HomeViewController.swift in Sources */,
 				D0C6C05E220CFA2300D33A93 /* Color.swift in Sources */,
@@ -280,6 +287,7 @@
 				D0C6C062220E3DAF00D33A93 /* ActivityView.swift in Sources */,
 				D0A094E4225AAE0700AC16B0 /* BudgetInfo.swift in Sources */,
 				D0D71D5E221241DE0047357E /* AddActionView.swift in Sources */,
+				D09115B522603CD500177399 /* EditBudgetView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -28,6 +28,7 @@ class HomeViewController: UIViewController {
     view.addSubview(activityView)
     
     activityView.addButton.addTarget(self, action: #selector(addButtonPressed), for: UIControl.Event.touchUpInside)
+    summaryView.editButton.addTarget(self, action: #selector(editBudgetButtonPressed), for: UIControl.Event.touchUpInside)
     
     activityView.activityTableView.delegate = self
     activityView.activityTableView.dataSource = self
@@ -36,7 +37,27 @@ class HomeViewController: UIViewController {
     loadActivity()
   }
   
+  @objc func editBudgetButtonPressed() {
+    // Present the edit budget view controller
+    let editBudgetViewController = EditBudgetViewController()
+    
+    editBudgetViewController.modalTransitionStyle = .coverVertical
+    editBudgetViewController.modalPresentationStyle = .overCurrentContext
+    
+    editBudgetViewController.editBudgetDelegate = self
+    
+    editBudgetViewController.editView.budgetField.text = "$" + String(budgetInfo!.budget)
+    editBudgetViewController.editView.budgetField.editingChanged()
+    
+    self.present(editBudgetViewController, animated: true, completion: nil)
+    
+    UIView.animate(withDuration: 0.4) {
+      self.navigationController?.navigationBar.barStyle = .default
+    }
+  }
+  
   @objc func addButtonPressed() {
+    // Present the add action view controller
     let addActivityViewController = AddActionViewController()
     
     addActivityViewController.modalTransitionStyle = .coverVertical
@@ -103,6 +124,7 @@ class HomeViewController: UIViewController {
     
     if budgetInfo == nil {
       budgetInfo = BudgetInfo()
+      budgetInfo?.budget = 250
       saveSummary()
     }
     
@@ -200,6 +222,14 @@ extension HomeViewController: AddActionDelegate {
     } else {
       budgetInfo?.difference -= action.amount
     }
+    
+    saveSummary()
+  }
+}
+
+extension HomeViewController: EditBudgetDelegate {
+  func newBudget(budgetAmount: Int) {
+    budgetInfo?.budget = budgetAmount
     
     saveSummary()
   }

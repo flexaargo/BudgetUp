@@ -221,7 +221,8 @@ class CurrencyField: UITextField {
   var decimalNumber: NSDecimalNumber { return decimal.number }
   var doubleValue: Double { return decimalNumber.doubleValue }
   var integerValue: Int { return decimalNumber.intValue }
-  let maximum: Decimal = 999_999.99
+  var maximum: Decimal = 999_999.99
+  var integerOnly: Bool = false
   private var lastValue: String?
   
   override func willMove(toSuperview newSuperview: UIView?) {
@@ -240,7 +241,15 @@ class CurrencyField: UITextField {
       text = lastValue
       return
     }
+    if integerOnly {
+      Formatter.currency.maximumFractionDigits = 0
+      Formatter.currency.minimumFractionDigits = 0
+    } else {
+      Formatter.currency.maximumFractionDigits = 2
+      Formatter.currency.minimumFractionDigits = 2
+    }
     text = Formatter.currency.string(for: decimal)
+    
     if text == Formatter.currency.string(from: 0) {
       text = nil
     }
