@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		D0A094E4225AAE0700AC16B0 /* BudgetInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A094E3225AAE0700AC16B0 /* BudgetInfo.swift */; };
 		D0B24D86220FC6B100DFF5C2 /* AddActionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B24D85220FC6B100DFF5C2 /* AddActionViewController.swift */; };
+		D0B731CB22601C010037659F /* GradientNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B731CA22601C010037659F /* GradientNavigationController.swift */; };
 		D0C6C05C220CF6EB00D33A93 /* SummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C6C05B220CF6EB00D33A93 /* SummaryView.swift */; };
 		D0C6C05E220CFA2300D33A93 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C6C05D220CFA2300D33A93 /* Color.swift */; };
 		D0C6C060220D037D00D33A93 /* Shadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C6C05F220D037D00D33A93 /* Shadow.swift */; };
@@ -29,6 +30,7 @@
 		524680E6AEF0E1660E403C20 /* Pods-BudgetUp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BudgetUp.debug.xcconfig"; path = "Target Support Files/Pods-BudgetUp/Pods-BudgetUp.debug.xcconfig"; sourceTree = "<group>"; };
 		D0A094E3225AAE0700AC16B0 /* BudgetInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetInfo.swift; sourceTree = "<group>"; };
 		D0B24D85220FC6B100DFF5C2 /* AddActionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddActionViewController.swift; sourceTree = "<group>"; };
+		D0B731CA22601C010037659F /* GradientNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientNavigationController.swift; sourceTree = "<group>"; };
 		D0C6C05B220CF6EB00D33A93 /* SummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryView.swift; sourceTree = "<group>"; };
 		D0C6C05D220CFA2300D33A93 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		D0C6C05F220D037D00D33A93 /* Shadow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shadow.swift; sourceTree = "<group>"; };
@@ -122,6 +124,7 @@
 			children = (
 				D0FEF57722094B7500A08446 /* HomeViewController.swift */,
 				D0B24D85220FC6B100DFF5C2 /* AddActionViewController.swift */,
+				D0B731CA22601C010037659F /* GradientNavigationController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -268,6 +271,7 @@
 				D0C6C065220EBB9700D33A93 /* Action.swift in Sources */,
 				D0FEF57822094B7500A08446 /* HomeViewController.swift in Sources */,
 				D0C6C05E220CFA2300D33A93 /* Color.swift in Sources */,
+				D0B731CB22601C010037659F /* GradientNavigationController.swift in Sources */,
 				D0B24D86220FC6B100DFF5C2 /* AddActionViewController.swift in Sources */,
 				D0C6C060220D037D00D33A93 /* Shadow.swift in Sources */,
 				D0FEF57622094B7500A08446 /* AppDelegate.swift in Sources */,

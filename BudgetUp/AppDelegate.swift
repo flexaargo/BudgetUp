@@ -21,7 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     let homeViewController = HomeViewController()
     homeViewController.view.backgroundColor = Color.lightBackground.value
     
-    let navigationController = UINavigationController()
+    let navigationController = GradientNavigationController()
     navigationController.viewControllers = [homeViewController]
     
     styleNavigationController(navigationController)
@@ -67,10 +67,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   func styleNavigationController(_ controller: UINavigationController) {
     controller.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
     controller.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
-    controller.navigationBar.prefersLargeTitles = true
-    controller.navigationBar.isTranslucent = false
+//    controller.navigationBar.prefersLargeTitles = true
+//    controller.navigationBar.isTranslucent = false
     controller.navigationBar.barStyle = .black
-    controller.navigationBar.barTintColor = Color.primaryLight.value
+//    controller.navigationBar.barTintColor = Color.primaryLight.value
   }
 
 
