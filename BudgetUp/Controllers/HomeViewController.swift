@@ -109,6 +109,27 @@ class HomeViewController: UIViewController {
     summaryView.setSummaryText(budgetInfo!)
   }
   
+  func deleteAction(at indexPath: IndexPath) {
+    if let actionToDelete = self.actions?[indexPath.row] {
+      do {
+        try self.realm.write {
+          // Change the remaining amount based on what action was deleted
+          if actionToDelete.actionCategoryEnum == .Deposit {
+            budgetInfo?.difference -= actionToDelete.amount
+          } else {
+            budgetInfo?.difference += actionToDelete.amount
+          }
+          
+          saveSummary()
+          
+          self.realm.delete(actionToDelete)
+        }
+      } catch {
+        print("Error deleting the action, \(error)")
+      }
+    }
+  }
+  
   private func setupLayout() {
     
     guard let navigationController = navigationController else { return }
@@ -134,6 +155,13 @@ class HomeViewController: UIViewController {
 extension HomeViewController: UITableViewDelegate {
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     tableView.deselectRow(at: indexPath, animated: true)
+  }
+  
+  func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+    if editingStyle == .delete {
+      deleteAction(at: indexPath)
+      tableView.deleteRows(at: [indexPath], with: .fade)
+    }
   }
 }
 
